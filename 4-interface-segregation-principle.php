@@ -1,6 +1,10 @@
 <?php
 
-// Interface Segregation Principle Violation
+/**
+ * Interface Segregation Principle Violation
+ */
+
+// This interface do more things
 interface Workable
 {
     public function canCode();
@@ -26,6 +30,7 @@ class Programmer implements Workable
     }
 }
 
+// Tester do not need to know how to code
 class Tester implements Workable
 {
     public function canCode()
@@ -44,6 +49,7 @@ class Tester implements Workable
     }
 }
 
+// Project manager do not need to know test right?
 class ProjectManagement
 {
     public function processCode(Workable $member)
@@ -54,7 +60,12 @@ class ProjectManagement
     }
 }
 
-// Refactored
+/**
+ * Refactor
+ *
+ * Separate code and test to 2 interfaces
+ * codeable and testable
+ */ 
 interface Codeable
 {
     public function code();
@@ -65,6 +76,13 @@ interface Testable
     public function test();
 }
 
+/**
+ * Depend on object, implements the right interface
+ *
+ * Program can codeable and testabe
+ * Tester can testable
+ * ProjectManager ...
+ */
 class Programmer implements Codeable, Testable
 {
     public function code()
@@ -93,3 +111,4 @@ class ProjectManagement
         $member->code();
     }
 }
+

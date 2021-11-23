@@ -1,9 +1,9 @@
 <?php
-// Dependency Inversion Principle Violation
-class Mailer
-{
+/**
+ * Dependency Inversion Principle Violation
+ */
 
-}
+class Mailer {}
 
 class SendWelcomeMessage
 {
@@ -16,12 +16,12 @@ class SendWelcomeMessage
 }
 
 // Refactored
-interface Mailer
+interface iMailer
 {
     public function send();
 }
 
-class SmtpMailer implements Mailer
+class SMTPMailer implements iMailer
 {
     public function send()
     {
@@ -29,7 +29,7 @@ class SmtpMailer implements Mailer
     }
 }
 
-class SendGridMailer implements Mailer
+class SendGridMailer implements iMailer
 {
     public function send()
     {
@@ -46,3 +46,4 @@ class SendWelcomeMessage
         $this->mailer = $mailer;
     }
 }
+

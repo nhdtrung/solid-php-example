@@ -1,6 +1,8 @@
 <?php
+/**
+ * Single Responsibility Principle Violation
+ */
 
-// Single Responsibility Principle Violation
 class Report
 {
     public function getTitle()
@@ -61,3 +63,4 @@ class JsonReportFormatter implements ReportFormattable
         return json_encode($report->getContents());
     }
 }
+

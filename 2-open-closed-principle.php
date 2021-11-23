@@ -1,6 +1,8 @@
 <?php
+/**
+ * Open Closed Principle Violation
+ */
 
-// Open Closed Principle Violation
 class Programmer
 {
     public function code()
