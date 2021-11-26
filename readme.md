@@ -1,10 +1,14 @@
 ## SOLID stands for:
 
-S: Single-responsibility principle
-O: Open-closed principle
-L: Liskov substitution principle
-I: Interface segregation principle
-D: Dependency Inversion Principle
+**S**: Single-responsibility principle
+
+**O**: Open-closed principle
+ 
+**L**: Liskov substitution principle
+ 
+**I**: Interface segregation principle
+ 
+**D**: Dependency Inversion Principle
 
 ### Single Responsibility Principle ([Example](./1-single-responsibility-principle.php))
 > A class should have one and only one reason to change, meaning that a class should have only one job.
