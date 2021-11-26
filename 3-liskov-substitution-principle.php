@@ -2,20 +2,23 @@
 /**
  * Objects must be replaceable by instances of their subtypes without altering the correct functioning of our system.
  *
- * Imagine managing two types of coffee machine. 
- * According to the user plan, we will use a basic or a premium coffee machine, 
- * The only difference is that the premium machine makes a good vanilla coffee plus than the basic machine. 
+ * Imagine managing two types of coffee machine.
+ * According to the user plan, we will use a basic or a premium coffee machine,
+ * The only difference is that the premium machine makes a good vanilla coffee plus than the basic machine.
  * The main program behavior must be the same for both machines.
  */
 
-interface CoffeeMachineInterface {
+interface CoffeeMachineInterface
+{
     public function brewCoffee($selection);
 }
 
 
-class BasicCoffeeMachine implements CoffeeMachineInterface {
-  
-    public function brewCoffee($selection) {
+class BasicCoffeeMachine implements CoffeeMachineInterface
+{
+
+    public function brewCoffee($selection)
+    {
         switch ($selection) {
             case 'ESPRESSO':
                 return $this->brewEspresso();
@@ -23,16 +26,19 @@ class BasicCoffeeMachine implements CoffeeMachineInterface {
                 throw new CoffeeException('Selection not supported');
         }
     }
-    
-    protected function brewEspresso() {
+
+    protected function brewEspresso()
+    {
         // Brew an espresso...
     }
 }
 
 
-class PremiumCoffeeMachine extends BasicCoffeeMachine {
-  
-    public function brewCoffee($selection) {
+class PremiumCoffeeMachine extends BasicCoffeeMachine
+{
+
+    public function brewCoffee($selection)
+    {
         switch ($selection) {
             case 'ESPRESSO':
                 return $this->brewEspresso();
@@ -42,14 +48,16 @@ class PremiumCoffeeMachine extends BasicCoffeeMachine {
                 throw new CoffeeException('Selection not supported');
         }
     }
-    
-    protected function brewVanillaCoffee() {
+
+    protected function brewVanillaCoffee()
+    {
         // Brew a vanilla coffee...
     }
 }
 
 
-function getCoffeeMachine(User $user) {
+function getCoffeeMachine(User $user)
+{
     switch ($user->getPlan()) {
         case 'PREMIUM':
             return new PremiumCoffeeMachine();
@@ -60,7 +68,8 @@ function getCoffeeMachine(User $user) {
 }
 
 
-function prepareCoffee(User $user, $selection) {
+function prepareCoffee(User $user, $selection)
+{
     $coffeeMachine = getCoffeeMachine($user);
     return $coffeeMachine->brewCoffee($selection);
 }
